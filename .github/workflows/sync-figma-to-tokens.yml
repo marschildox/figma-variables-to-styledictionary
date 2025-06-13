@@ -1,55 +1,53 @@
-name: Sync Figma variables to tokens
+name: Sync Figma variables to tokens (JSON-only)
+
 on:
   workflow_dispatch:
     inputs:
       file_key:
-        description: 'The file key of the Figma file to be updated'
+        description: Figma FILE_KEY a sincronizar
         required: true
 
 jobs:
   sync-figma-to-tokens:
     runs-on: ubuntu-latest
+
     permissions:
-      # Need to be able to create new branches and commits
       contents: write
       pull-requests: write
+
     steps:
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      # 1) Checkout & Node
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
         with:
-          node-version: '18.16.0'
-
-      - name: Set NPM version
-        run: npm install -g npm@9.5.1
-
-      - name: Clone repo
-        uses: actions/checkout@v3
+          node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci            # usa package-lock
 
-      # - name: Install Style Dictionary
-      #   run: npm install -g style-dictionary
-
-      # - name: Clear tokens directory for demo
-      #   run: bash cleanup.sh
-
-      - name: Sync variables in Figma file to tokens
+      # 2) Pull: Figma → tokens/
+      - name: Sync Figma variables → tokens
         run: npm run sync-figma-to-tokens -- --output tokens
         env:
-          FILE_KEY: ${{ github.event.inputs.file_key }}
+          FILE_KEY: ${{ inputs.file_key }}
           PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_ACTION_VARIABLES_SYNC_FIGMA_TOKEN }}
 
-      # - name: Remove dollar signs from output (SD won't work otherwise)
-      #   run: bash removedollarsigns.sh
-  
-      # - name: Build Style Dictionary (uses config.json to define src/dest)
-      #   run: npm run build
-        
+      # 3) Normaliza alias ($)      ─ opcional pero recomendable
+      - name: Remove dollar signs
+        run: |
+          chmod +x removedollarsigns.sh
+          ./removedollarsigns.sh
+
+      # 4) PR sólo con carpeta tokens/
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: Update tokens from Figma
-          title: Update tokens from Figma
-          body: 'Update tokens from Figma from file: https://www.figma.com/file/${{ github.event.inputs.file_key }}'
-          branch: update-tokens
+          commit-message: "chore(tokens): update from Figma"
+          title: "Update design tokens from Figma"
+          body: |
+            Tokens actualizados automáticamente desde:
+            https://www.figma.com/file/${{ inputs.file_key }}
+          branch: update-tokens-json-only
+          add-paths: |
+            tokens/**
