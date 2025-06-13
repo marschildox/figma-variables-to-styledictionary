@@ -1,52 +1,70 @@
-name: Build Style Dictionary
+name: Sync Figma → tokens → build + PR
 
 on:
-  workflow_dispatch:          # permite lanzarlo a mano
-  push:                       # o cuando cambien tokens/ o la config
-    paths:
-      - "tokens/**"
-      - "config.json"
-      - ".github/workflows/build-style-dictionary.yml"
+  workflow_dispatch:
+    inputs:
+      file_key:
+        description: 'Figma FILE_KEY a sincronizar'
+        required: true
 
 jobs:
-  build:
+  sync-build-pr:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write          # push / PR
+      pull-requests: write
+
     steps:
-      # 1. Clona el repo
+      # 1) Checkout del repo
       - uses: actions/checkout@v4
 
-      # 2. Node 18 (mismo runtime que los otros workflows)
+      # 2) Node 18 + npm 9.x (mismo runtime que scripts)
       - uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      # 3. Instala dependencias declaradas en package.json
-      - name: Install dependencies
-        run: npm ci
+      - name: Install deps
+        run: npm ci             # reproducible
 
-      # 4. Lista los JSON para depuración
-      - name: List token files
-        run: |
-          echo "=== JSON detectados ==="
-          find tokens -type f -name '*.json' -print
+      # 3) Limpia tokens si lo necesitas (opcional)
+      #    comenta esta línea si ya no usas 'cleanup.sh'
+      - name: (Demo) clear tokens directory
+        run: bash cleanup.sh
 
-      # 5. Elimina los "$" de los alias
+      # 4) Sincroniza Figma → JSON
+      - name: Sync Figma variables → tokens
+        run: npm run sync-figma-to-tokens -- --output tokens
+        env:
+          FILE_KEY: ${{ inputs.file_key }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_ACTION_VARIABLES_SYNC_FIGMA_TOKEN }}
+
+      # 5) Quita los '$' (script corregido: recursivo + nombres con espacios)
       - name: Remove dollar signs
         run: |
           chmod +x removedollarsigns.sh
           ./removedollarsigns.sh
 
-      # 6. Limpia y construye Style Dictionary (log en modo info)
+      # 6) Compila Style Dictionary con limpieza previa
       - name: Build Style Dictionary
-        run: |
-          npm run build        # incluye style-dictionary clean + build
         env:
           SD_LOG_LEVEL: info
+        run: npm run build      # = style-dictionary clean + build (usa sd.config.js)
 
-      # 7. Sube la carpeta build/ como artefacto
+      # 7) (Opcional) sube build/ como artefacto
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: style-dictionary-build
           path: build/
+
+      # 8) Crea (o actualiza) Pull Request con tokens + build
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: "chore(tokens): update from Figma"
+          title: Update design tokens from Figma
+          body: |
+            Tokens y assets de Style Dictionary actualizados automáticamente
+            desde https://www.figma.com/file/${{ inputs.file_key }}
+          branch: update-tokens
