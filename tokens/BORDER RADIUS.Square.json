@@ -1,10 +1,10 @@
 {
   "General": {
     "Border_radius": {
-      "$type": "number",
-      "$value": "{radius_0px}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{radius_0px}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -17,10 +17,10 @@
   },
   "Cards": {
     "Border_radius": {
-      "$type": "number",
-      "$value": "{radius_0px}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{radius_0px}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -33,10 +33,10 @@
   },
   "Internal image": {
     "Border_radius": {
-      "$type": "number",
-      "$value": "{radius_0px}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{radius_0px}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [

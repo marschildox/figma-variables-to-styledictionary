@@ -1,10 +1,10 @@
 {
   "Primary": {
     "50": {
-      "$type": "color",
-      "$value": "{Blue.50}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Blue.50}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -15,10 +15,10 @@
       }
     },
     "100": {
-      "$type": "color",
-      "$value": "{Blue.100}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Blue.100}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -29,10 +29,10 @@
       }
     },
     "300": {
-      "$type": "color",
-      "$value": "{Blue.300}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Blue.300}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -43,10 +43,10 @@
       }
     },
     "500": {
-      "$type": "color",
-      "$value": "{Blue.500}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Blue.500}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -57,10 +57,10 @@
       }
     },
     "700": {
-      "$type": "color",
-      "$value": "{Blue.700}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Blue.700}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -71,10 +71,10 @@
       }
     },
     "900": {
-      "$type": "color",
-      "$value": "{Blue.900}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Blue.900}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -85,10 +85,10 @@
       }
     },
     "Primary-4%": {
-      "$type": "color",
-      "$value": "{Blue.500-4%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Blue.500-4%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -99,10 +99,10 @@
       }
     },
     "Primary-5%": {
-      "$type": "color",
-      "$value": "{Blue.500-5%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Blue.500-5%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -113,10 +113,10 @@
       }
     },
     "Primary-8%": {
-      "$type": "color",
-      "$value": "{Blue.500-8%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Blue.500-8%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -127,10 +127,10 @@
       }
     },
     "Primary-10%": {
-      "$type": "color",
-      "$value": "{Blue.500-10%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Blue.500-10%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -141,10 +141,10 @@
       }
     },
     "Primary-11%": {
-      "$type": "color",
-      "$value": "{Blue.500-11%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Blue.500-11%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -155,10 +155,10 @@
       }
     },
     "Primary-12%": {
-      "$type": "color",
-      "$value": "{Blue.500-12%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Blue.500-12%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -169,10 +169,10 @@
       }
     },
     "Primary-14%": {
-      "$type": "color",
-      "$value": "{Blue.500-14%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Blue.500-14%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -185,10 +185,10 @@
   },
   "Neutral": {
     "50": {
-      "$type": "color",
-      "$value": "{Grey.50}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Grey.50}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -199,10 +199,10 @@
       }
     },
     "100": {
-      "$type": "color",
-      "$value": "{Grey.100}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Grey.100}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -213,10 +213,10 @@
       }
     },
     "300": {
-      "$type": "color",
-      "$value": "{Grey.300}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Grey.300}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -227,10 +227,10 @@
       }
     },
     "500": {
-      "$type": "color",
-      "$value": "{Grey.500}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Grey.500}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -241,10 +241,10 @@
       }
     },
     "700": {
-      "$type": "color",
-      "$value": "{Grey.700}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Grey.700}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -255,10 +255,10 @@
       }
     },
     "900": {
-      "$type": "color",
-      "$value": "{Grey.900}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Grey.900}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -269,10 +269,10 @@
       }
     },
     "Neutral-5%": {
-      "$type": "color",
-      "$value": "{Grey.500-5%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Grey.500-5%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -283,10 +283,10 @@
       }
     },
     "Neutral-8%": {
-      "$type": "color",
-      "$value": "{Grey.500-8%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Grey.500-8%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -297,10 +297,10 @@
       }
     },
     "Neutral-12%": {
-      "$type": "color",
-      "$value": "{Grey.500-12%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Grey.500-12%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -311,10 +311,10 @@
       }
     },
     "Neutral-15%": {
-      "$type": "color",
-      "$value": "{Grey.500-15%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Grey.500-15%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -325,10 +325,10 @@
       }
     },
     "Neutral-18%": {
-      "$type": "color",
-      "$value": "{Grey.500-18%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Grey.500-18%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -341,10 +341,10 @@
   },
   "Secondary": {
     "Secondary 900": {
-      "$type": "color",
-      "$value": "{Deep Green.900}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Deep Green.900}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -355,10 +355,10 @@
       }
     },
     "Secondary 700": {
-      "$type": "color",
-      "$value": "{Deep Green.700}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Deep Green.700}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -369,10 +369,10 @@
       }
     },
     "Secondary 500": {
-      "$type": "color",
-      "$value": "{Deep Green.500}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Deep Green.500}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -383,10 +383,10 @@
       }
     },
     "Secondary 300": {
-      "$type": "color",
-      "$value": "{Deep Green.300}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Deep Green.300}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -397,10 +397,10 @@
       }
     },
     "Secondary 100": {
-      "$type": "color",
-      "$value": "{Deep Green.100}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Deep Green.100}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -411,10 +411,10 @@
       }
     },
     "Secondary 50": {
-      "$type": "color",
-      "$value": "{Deep Green.50}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Deep Green.50}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -425,10 +425,10 @@
       }
     },
     "Secondary-4%": {
-      "$type": "color",
-      "$value": "{Deep Green.500-4%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Deep Green.500-4%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -439,10 +439,10 @@
       }
     },
     "Secondary-5%": {
-      "$type": "color",
-      "$value": "{Deep Green.500-5%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Deep Green.500-5%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -453,10 +453,10 @@
       }
     },
     "Secondary-8%": {
-      "$type": "color",
-      "$value": "{Deep Green.500-8%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Deep Green.500-8%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -467,10 +467,10 @@
       }
     },
     "Secondary-10%": {
-      "$type": "color",
-      "$value": "{Deep Green.500-10%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Deep Green.500-10%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -481,10 +481,10 @@
       }
     },
     "Secondary-11%": {
-      "$type": "color",
-      "$value": "{Deep Green.500-11%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Deep Green.500-11%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -495,10 +495,10 @@
       }
     },
     "Secondary-12%": {
-      "$type": "color",
-      "$value": "{Deep Green.500-12%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Deep Green.500-12%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -509,10 +509,10 @@
       }
     },
     "Secondary-14%": {
-      "$type": "color",
-      "$value": "{Deep Green.500-14%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Deep Green.500-14%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -525,10 +525,10 @@
   },
   "Basic": {
     "White": {
-      "$type": "color",
-      "$value": "{White.FFF}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{White.FFF}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -539,10 +539,10 @@
       }
     },
     "Black": {
-      "$type": "color",
-      "$value": "{Black.000}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Black.000}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -553,10 +553,10 @@
       }
     },
     "Tooltip": {
-      "$type": "color",
-      "$value": "{Dark Grey.Dark grey}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Dark Grey.Dark grey}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -567,10 +567,10 @@
       }
     },
     "Focus visible": {
-      "$type": "color",
-      "$value": "{Bright Pink.500}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Bright Pink.500}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -581,10 +581,10 @@
       }
     },
     "Accent 1": {
-      "$type": "color",
-      "$value": "{Blue.300}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Blue.300}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -595,10 +595,10 @@
       }
     },
     "Accent 2": {
-      "$type": "color",
-      "$value": "{Blue.500}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Blue.500}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -611,10 +611,10 @@
   },
   "Success": {
     "50": {
-      "$type": "color",
-      "$value": "{Green.50}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Green.50}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -625,10 +625,10 @@
       }
     },
     "100": {
-      "$type": "color",
-      "$value": "{Green.100}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Green.100}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -639,10 +639,10 @@
       }
     },
     "300": {
-      "$type": "color",
-      "$value": "{Green.300}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Green.300}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -653,10 +653,10 @@
       }
     },
     "500": {
-      "$type": "color",
-      "$value": "{Green.500}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Green.500}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -667,10 +667,10 @@
       }
     },
     "700": {
-      "$type": "color",
-      "$value": "{Green.700}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Green.700}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -681,10 +681,10 @@
       }
     },
     "900": {
-      "$type": "color",
-      "$value": "{Green.900}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Green.900}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -697,10 +697,10 @@
   },
   "Error": {
     "50": {
-      "$type": "color",
-      "$value": "{Red.50}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Red.50}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -711,10 +711,10 @@
       }
     },
     "100": {
-      "$type": "color",
-      "$value": "{Red.100}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Red.100}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -725,10 +725,10 @@
       }
     },
     "300": {
-      "$type": "color",
-      "$value": "{Red.300}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Red.300}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -739,10 +739,10 @@
       }
     },
     "500": {
-      "$type": "color",
-      "$value": "{Red.500}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Red.500}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -753,10 +753,10 @@
       }
     },
     "700": {
-      "$type": "color",
-      "$value": "{Red.700}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Red.700}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -767,10 +767,10 @@
       }
     },
     "900": {
-      "$type": "color",
-      "$value": "{Red.900}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Red.900}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -783,10 +783,10 @@
   },
   "Warning": {
     "50": {
-      "$type": "color",
-      "$value": "{Orange.50}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Orange.50}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -797,10 +797,10 @@
       }
     },
     "100": {
-      "$type": "color",
-      "$value": "{Orange.100}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Orange.100}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -811,10 +811,10 @@
       }
     },
     "300": {
-      "$type": "color",
-      "$value": "{Orange.300}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Orange.300}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -825,10 +825,10 @@
       }
     },
     "500": {
-      "$type": "color",
-      "$value": "{Orange.500}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Orange.500}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -839,10 +839,10 @@
       }
     },
     "700": {
-      "$type": "color",
-      "$value": "{Orange.700}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Orange.700}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -853,10 +853,10 @@
       }
     },
     "900": {
-      "$type": "color",
-      "$value": "{Orange.900}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Orange.900}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
