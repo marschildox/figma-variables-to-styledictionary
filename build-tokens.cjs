@@ -31,16 +31,16 @@ StyleDictionary.registerTransformGroup({
   ]
 });
 
-/* 1️⃣  recorre **todos** los JSON de tokens/ ----------------------------- */
+/* 1️⃣ recorre **todos** los JSON de tokens/ ------------------------------ */
 glob.sync('tokens/**/*.json').forEach(fullPath => {
-  const { dir, name } = path.parse(fullPath);            // p. ej. dir="tokens", name="SEMANTIC COLORS.Asia Verdezul"
+  const { name } = path.parse(fullPath);                // ej. "SEMANTIC COLORS.Asia Verdezul"
   const [rawCol, rawMode = 'base'] = name.split('.');
 
-  const colId  = kebab(rawCol);                          // semantic-colors
-  const modeId = kebab(rawMode);                         // asia-verdezul  | base
+  const colId  = kebab(rawCol);                         // semantic-colors
+  const modeId = kebab(rawMode);                        // asia-verdezul | base
   const outDir = `build/css/${colId}/`;
 
-  /* 2️⃣  extiende SD cargando TODOS los tokens --------------------------- */
+  /* 2️⃣ extiende SD cargando **todos** los tokens ----------------------- */
   StyleDictionary.extend({
     source: ['tokens/**/*.json'],
     platforms: {
@@ -51,8 +51,22 @@ glob.sync('tokens/**/*.json').forEach(fullPath => {
           destination: `${modeId}.css`,
           format: 'css/variables',
 
-          /* 🔑 solo tokens cuyo **filePath** es EXACTAMENTE el que procesamos */
-          filter: token => path.resolve(token.filePath) === path.resolve(fullPath),
+          /* 🔑 filtra:
+             a) tokens cuyo filePath es EXACTAMENTE este JSON
+             b) alias que hagan referencia a tokens de este JSON          */
+          filter: token => {
+            const sameFile = path.resolve(token.filePath) === path.resolve(fullPath);
+
+            if (sameFile) return true;                      // caso (a)
+
+            // ----- caso (b): alias -----
+            if (token.original && typeof token.original.value === 'string') {
+              // coincidimos por "<colección>.<modo>" en la reference
+              const referenceKey = `${rawCol}.${rawMode}`;
+              return token.original.value.includes(referenceKey);
+            }
+            return false;
+          },
 
           options: { outputReferences: true, includeEmpty: true }
         }]
@@ -63,4 +77,4 @@ glob.sync('tokens/**/*.json').forEach(fullPath => {
   console.log(`✔︎  ${fullPath} → ${outDir}${modeId}.css`);
 });
 
-console.log('🏁  Build terminado – 1 CSS por JSON');
+console.log('🏁  Build terminado – 1 CSS por JSON (con alias resueltos)');
