@@ -1,0 +1,32 @@
+# .github/workflows/build-style-dictionary.yml
+name: Build Style Dictionary
+
+on:
+  workflow_dispatch:            # ↩ permite lanzarlo a mano
+  push:
+    paths:                      # ↩ o cuando cambien los tokens
+      - "tokens/**"
+      - "config.json"
+      - ".github/workflows/build-style-dictionary.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm ci               # instala deps declaradas en package.json
+      - run: bash removedollarsigns.sh
+      - run: npm run build
+
+      # opcional: sube artefacto ZIP con la carpeta build/
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: style-dictionary-build
+          path: build/
