@@ -1,47 +1,48 @@
-/* sd.config.cjs  ⇢  usa .cjs para que style-dictionary (CJS) pueda requerirlo */
+/* sd.config.cjs ------------------------------------------------------------ */
 const fs   = require('fs');
 const path = require('path');
 const StyleDictionary = require('style-dictionary');
 
-/* ───────────── 1. MODO a partir del nombre de archivo ───────────── */
+/* ──────────────────────────────── 1. helper ─────────────────────────────── */
+const kebab = str =>
+  str.normalize('NFD').replace(/[\u0300-\u036f]/g, '') // tildes fuera
+     .replace(/[^a-zA-Z0-9]+/g, '-')                  // sep → guión
+     .replace(/^-|-$/g, '')                           // trims
+     .toLowerCase();
+
+/* ───── 2. Transform: añade token.attributes.mode solo si proviene de
+          un archivo 'SEMANTIC COLORS.<mode>.json' ────────────────────────── */
 StyleDictionary.registerTransform({
-  name: 'attribute/mode-from-path',
+  name: 'attribute/mode-from-semantic-colors',
   type: 'attribute',
   transformer(token) {
-    // …/tokens/SEMANTIC COLORS.Asia Verdezul.json  →  "Asia Verdezul"
-    const match = token.filePath.match(/\.([^.]+)\.json$/);
-    if (match) token.attributes = { ...token.attributes, mode: match[1] };
+    const re = /SEMANTIC COLORS\.([^.]+)\.json$/i;
+    const hit = token.filePath.match(re);
+    if (hit) token.attributes = { ...token.attributes, mode: hit[1] };
     return token.attributes;
   }
 });
 
-/* ───────────── 2. Nombre kebab + sin tildes ───────────── */
+/* ───── 3. Transform: kebab + sin tildes ─────────────────────────────────── */
 StyleDictionary.registerTransform({
   name: 'name/uni-kebab',
   type: 'name',
-  transformer: prop =>
-    prop.path
-      .join('-')
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')  // quita tildes
-      .replace(/[^a-zA-Z0-9]+/g, '-')                   // espacios, ':' …
-      .replace(/^-|-$/g, '')                            // trims
-      .toLowerCase()
+  transformer: prop => kebab(prop.path.join('-'))
 });
 
-/* ───────────── 3. Radius & dimension como px ───────────── */
+/* ───── 4. Transform: border radius → px ─────────────────────────────────── */
 StyleDictionary.registerTransform({
   name: 'size/borderRadius',
   type: 'value',
-  matcher: prop =>
-    ['borderRadius', 'dimension', 'size', 'radius'].includes(prop.original.type),
-  transformer: prop => `${prop.value}px`
+  matcher: p => ['borderRadius', 'dimension', 'size', 'radius'].includes(p.original.type),
+  transformer: p => `${p.value}px`
 });
 
-/* ───────────── 4. Agrupa transforms ───────────── */
+/* ───── 5. Agrupación personalizada ─────────────────────────────────────── */
 StyleDictionary.registerTransformGroup({
   name: 'custom/css',
   transforms: [
-    'attribute/mode-from-path',  // ①  primero sacamos el modo
+    'attribute/mode-from-semantic-colors', // 👈 primero, saca el modo
     'attribute/cti',
     'name/uni-kebab',
     'size/borderRadius',
@@ -49,11 +50,10 @@ StyleDictionary.registerTransformGroup({
   ]
 });
 
-/* ───────────── 5. Config base ───────────── */
+/* ───── 6. Config base ───────────────────────────────────────────────────── */
 const config = {
   source: ['tokens/**/*.json'],
   platforms: {
-    /* Otras plataformas que no dependen del modo */
     js:  {
       buildPath: 'build/js/',
       transformGroup: 'scss',
@@ -75,28 +75,24 @@ const config = {
   }
 };
 
-/* ───────────── 6. Descubre los modos presentes y crea
-                  una plataforma CSS por cada uno ───────────── */
-const modeSet = new Set();
+/* ───── 7. Descubre modos según SEMANTIC COLORS.*.json ───────────────────── */
+const tokensDir = path.resolve(__dirname, 'tokens');
+fs.readdirSync(tokensDir)
+  .filter(fn => fn.startsWith('SEMANTIC COLORS.') && fn.endsWith('.json'))
+  .forEach(fn => {
+    const mode = fn.match(/^SEMANTIC COLORS\.([^.]+)\.json$/i)[1];
+    const keb  = kebab(mode);
 
-// Recorremos todos los JSON bajo tokens/
-fs.readdirSync(path.resolve(__dirname, 'tokens')).forEach(file => {
-  const m = file.match(/\.([^.]+)\.json$/);
-  if (m) modeSet.add(m[1]);
-});
-
-modeSet.forEach(mode => {
-  const kebab = mode.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  config.platforms[`css-${kebab}`] = {
-    buildPath: `build/css/${kebab}/`,
-    transformGroup: 'custom/css',
-    files: [{
-      destination: `variables-${kebab}.css`,
-      format: 'css/variables',
-      filter: token => token.attributes.mode === mode,
-      options: { outputReferences: true }
-    }]
-  };
-});
+    config.platforms[`css-${keb}`] = {
+      buildPath: `build/css/${keb}/`,
+      transformGroup: 'custom/css',
+      files: [{
+        destination: `variables-${keb}.css`,
+        format: 'css/variables',
+        filter: token => token.attributes.mode === mode, // solo tokens de ese modo
+        options: { outputReferences: true }
+      }]
+    };
+  });
 
 module.exports = config;
