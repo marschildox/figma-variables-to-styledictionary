@@ -1,9 +1,9 @@
 {
   "radius_0px": {
-    "$type": "number",
-    "$value": 0,
-    "$description": "",
-    "$extensions": {
+    "type": "number",
+    "value": 0,
+    "description": "",
+    "extensions": {
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [],
@@ -12,10 +12,10 @@
     }
   },
   "radius_2px": {
-    "$type": "number",
-    "$value": 2,
-    "$description": "",
-    "$extensions": {
+    "type": "number",
+    "value": 2,
+    "description": "",
+    "extensions": {
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [],
@@ -24,10 +24,10 @@
     }
   },
   "radius_4px": {
-    "$type": "number",
-    "$value": 4,
-    "$description": "",
-    "$extensions": {
+    "type": "number",
+    "value": 4,
+    "description": "",
+    "extensions": {
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [],
@@ -36,10 +36,10 @@
     }
   },
   "radius_8px": {
-    "$type": "number",
-    "$value": 8,
-    "$description": "",
-    "$extensions": {
+    "type": "number",
+    "value": 8,
+    "description": "",
+    "extensions": {
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [],
@@ -48,10 +48,10 @@
     }
   },
   "radius_16px": {
-    "$type": "number",
-    "$value": 16,
-    "$description": "",
-    "$extensions": {
+    "type": "number",
+    "value": 16,
+    "description": "",
+    "extensions": {
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [],
@@ -60,10 +60,10 @@
     }
   },
   "radius_24px": {
-    "$type": "number",
-    "$value": 24,
-    "$description": "",
-    "$extensions": {
+    "type": "number",
+    "value": 24,
+    "description": "",
+    "extensions": {
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [],
@@ -72,10 +72,10 @@
     }
   },
   "radius_32px": {
-    "$type": "number",
-    "$value": 32,
-    "$description": "",
-    "$extensions": {
+    "type": "number",
+    "value": 32,
+    "description": "",
+    "extensions": {
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [],

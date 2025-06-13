@@ -1,10 +1,10 @@
 {
   "Hero": {
     "Font Family": {
-      "$type": "string",
-      "$value": "{Font Family.Family Title}",
-      "$description": "",
-      "$extensions": {
+      "type": "string",
+      "value": "{Font Family.Family Title}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -15,10 +15,10 @@
       }
     },
     "size-lg": {
-      "$type": "number",
-      "$value": "{Size.Size-72}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-72}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -29,10 +29,10 @@
       }
     },
     "size-md": {
-      "$type": "number",
-      "$value": "{Size.Size-64}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-64}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -43,10 +43,10 @@
       }
     },
     "size-sm": {
-      "$type": "number",
-      "$value": "{Size.Size-48}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-48}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -57,10 +57,10 @@
       }
     },
     "size-xs": {
-      "$type": "number",
-      "$value": "{Size.Size-40}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-40}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -71,10 +71,10 @@
       }
     },
     "Font weight": {
-      "$type": "number",
-      "$value": "{Weight.Weight-700-bold}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Weight.Weight-700-bold}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -87,10 +87,10 @@
   },
   "Hero Subtitle": {
     "Font Family": {
-      "$type": "string",
-      "$value": "{Font Family.Family Body}",
-      "$description": "",
-      "$extensions": {
+      "type": "string",
+      "value": "{Font Family.Family Body}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -101,10 +101,10 @@
       }
     },
     "size-lg": {
-      "$type": "number",
-      "$value": "{Size.Size-40}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-40}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -115,10 +115,10 @@
       }
     },
     "size-md": {
-      "$type": "number",
-      "$value": "{Size.Size-32}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-32}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -129,10 +129,10 @@
       }
     },
     "size-sm": {
-      "$type": "number",
-      "$value": "{Size.Size-24}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-24}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -143,10 +143,10 @@
       }
     },
     "Font regular": {
-      "$type": "number",
-      "$value": "{Weight.Weight-400-regular}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Weight.Weight-400-regular}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -157,10 +157,10 @@
       }
     },
     "Font strong": {
-      "$type": "number",
-      "$value": "{Weight.Weight-700-bold}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Weight.Weight-700-bold}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -173,10 +173,10 @@
   },
   "Page Title": {
     "Font Family": {
-      "$type": "string",
-      "$value": "{Font Family.Family Title}",
-      "$description": "",
-      "$extensions": {
+      "type": "string",
+      "value": "{Font Family.Family Title}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -187,10 +187,10 @@
       }
     },
     "size-lg": {
-      "$type": "number",
-      "$value": "{Size.Size-64}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-64}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -201,10 +201,10 @@
       }
     },
     "size-md": {
-      "$type": "number",
-      "$value": "{Size.Size-48}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-48}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -215,10 +215,10 @@
       }
     },
     "size-sm": {
-      "$type": "number",
-      "$value": "{Size.Size-32}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-32}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -229,10 +229,10 @@
       }
     },
     "Font weight": {
-      "$type": "number",
-      "$value": "{Weight.Weight-700-bold}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Weight.Weight-700-bold}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -245,10 +245,10 @@
   },
   "Page Subtitle": {
     "Font Family": {
-      "$type": "string",
-      "$value": "{Font Family.Family Body}",
-      "$description": "",
-      "$extensions": {
+      "type": "string",
+      "value": "{Font Family.Family Body}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -259,10 +259,10 @@
       }
     },
     "size-lg": {
-      "$type": "number",
-      "$value": "{Size.Size-40}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-40}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -273,10 +273,10 @@
       }
     },
     "size-md": {
-      "$type": "number",
-      "$value": "{Size.Size-32}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-32}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -287,10 +287,10 @@
       }
     },
     "Size-sm": {
-      "$type": "number",
-      "$value": "{Size.Size-24}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-24}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -301,10 +301,10 @@
       }
     },
     "Font weight": {
-      "$type": "number",
-      "$value": "{Weight.Weight-400-regular}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Weight.Weight-400-regular}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -317,10 +317,10 @@
   },
   "Section Title": {
     "Font Family": {
-      "$type": "string",
-      "$value": "{Font Family.Family Title}",
-      "$description": "",
-      "$extensions": {
+      "type": "string",
+      "value": "{Font Family.Family Title}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -331,10 +331,10 @@
       }
     },
     "size-lg": {
-      "$type": "number",
-      "$value": "{Size.Size-32}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-32}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -345,10 +345,10 @@
       }
     },
     "size-md": {
-      "$type": "number",
-      "$value": "{Size.Size-24}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-24}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -359,10 +359,10 @@
       }
     },
     "Size-sm": {
-      "$type": "number",
-      "$value": "{Size.Size-20}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-20}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -373,10 +373,10 @@
       }
     },
     "Font weight": {
-      "$type": "number",
-      "$value": "{Weight.Weight-600-semibold}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Weight.Weight-600-semibold}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -389,10 +389,10 @@
   },
   "Section Subtitle": {
     "Font Family": {
-      "$type": "string",
-      "$value": "{Font Family.Family Body}",
-      "$description": "",
-      "$extensions": {
+      "type": "string",
+      "value": "{Font Family.Family Body}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -403,10 +403,10 @@
       }
     },
     "size-lg": {
-      "$type": "number",
-      "$value": "{Size.Size-24}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-24}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -417,10 +417,10 @@
       }
     },
     "size-md": {
-      "$type": "number",
-      "$value": "{Size.Size-20}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-20}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -431,10 +431,10 @@
       }
     },
     "Size-sm": {
-      "$type": "number",
-      "$value": "{Size.Size-16}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-16}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -445,10 +445,10 @@
       }
     },
     "Font weight": {
-      "$type": "number",
-      "$value": "{Weight.Weight-400-regular}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Weight.Weight-400-regular}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -461,10 +461,10 @@
   },
   "Component Title": {
     "Font Family": {
-      "$type": "string",
-      "$value": "{Font Family.Family Body}",
-      "$description": "",
-      "$extensions": {
+      "type": "string",
+      "value": "{Font Family.Family Body}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -475,10 +475,10 @@
       }
     },
     "size-lg": {
-      "$type": "number",
-      "$value": "{Size.Size-32}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-32}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -489,10 +489,10 @@
       }
     },
     "size-md": {
-      "$type": "number",
-      "$value": "{Size.Size-24}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-24}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -503,10 +503,10 @@
       }
     },
     "Size-sm": {
-      "$type": "number",
-      "$value": "{Size.Size-20}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-20}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -517,10 +517,10 @@
       }
     },
     "Font weight": {
-      "$type": "number",
-      "$value": "{Weight.Weight-600-semibold}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Weight.Weight-600-semibold}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -533,10 +533,10 @@
   },
   "Component Subtitle": {
     "Font Family": {
-      "$type": "string",
-      "$value": "{Font Family.Family Body}",
-      "$description": "",
-      "$extensions": {
+      "type": "string",
+      "value": "{Font Family.Family Body}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -547,10 +547,10 @@
       }
     },
     "size-lg": {
-      "$type": "number",
-      "$value": "{Size.Size-24}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-24}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -561,10 +561,10 @@
       }
     },
     "size-md": {
-      "$type": "number",
-      "$value": "{Size.Size-20}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-20}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -575,10 +575,10 @@
       }
     },
     "Size-sm": {
-      "$type": "number",
-      "$value": "{Size.Size-16}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-16}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -589,10 +589,10 @@
       }
     },
     "Font weight": {
-      "$type": "number",
-      "$value": "{Weight.Weight-400-regular}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Weight.Weight-400-regular}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -605,10 +605,10 @@
   },
   "Body": {
     "Font Family": {
-      "$type": "string",
-      "$value": "{Font Family.Family Body}",
-      "$description": "",
-      "$extensions": {
+      "type": "string",
+      "value": "{Font Family.Family Body}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -619,10 +619,10 @@
       }
     },
     "size-lg": {
-      "$type": "number",
-      "$value": "{Size.Size-20}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-20}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -633,10 +633,10 @@
       }
     },
     "size-md": {
-      "$type": "number",
-      "$value": "{Size.Size-16}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-16}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -647,10 +647,10 @@
       }
     },
     "Size-sm": {
-      "$type": "number",
-      "$value": "{Size.Size-14}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-14}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -661,10 +661,10 @@
       }
     },
     "Font regular": {
-      "$type": "number",
-      "$value": "{Weight.Weight-400-regular}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Weight.Weight-400-regular}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -675,10 +675,10 @@
       }
     },
     "Font strong": {
-      "$type": "number",
-      "$value": "{Weight.Weight-600-semibold}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Weight.Weight-600-semibold}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -689,10 +689,10 @@
       }
     },
     "Italic": {
-      "$type": "string",
-      "$value": "{Style.Medium Italic}",
-      "$description": "",
-      "$extensions": {
+      "type": "string",
+      "value": "{Style.Medium Italic}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -705,10 +705,10 @@
   },
   "Button": {
     "Font Family": {
-      "$type": "string",
-      "$value": "{Font Family.Family Button}",
-      "$description": "",
-      "$extensions": {
+      "type": "string",
+      "value": "{Font Family.Family Button}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -719,10 +719,10 @@
       }
     },
     "size-lg": {
-      "$type": "number",
-      "$value": "{Size.Size-18}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-18}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -733,10 +733,10 @@
       }
     },
     "size-md": {
-      "$type": "number",
-      "$value": "{Size.Size-16}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-16}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -747,10 +747,10 @@
       }
     },
     "size-sm": {
-      "$type": "number",
-      "$value": "{Size.Size-14}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-14}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -761,10 +761,10 @@
       }
     },
     "Font strong": {
-      "$type": "number",
-      "$value": "{Weight.Weight-600-semibold}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Weight.Weight-600-semibold}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -777,10 +777,10 @@
   },
   "Caption": {
     "Font Family": {
-      "$type": "string",
-      "$value": "{Font Family.Family Body}",
-      "$description": "",
-      "$extensions": {
+      "type": "string",
+      "value": "{Font Family.Family Body}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -791,10 +791,10 @@
       }
     },
     "size-lg": {
-      "$type": "number",
-      "$value": "{Size.Size-14}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-14}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -805,10 +805,10 @@
       }
     },
     "size-md": {
-      "$type": "number",
-      "$value": "{Size.Size-12}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-12}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -819,10 +819,10 @@
       }
     },
     "size-sm": {
-      "$type": "number",
-      "$value": "{Size.Size-10}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Size.Size-10}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -833,10 +833,10 @@
       }
     },
     "Font regular": {
-      "$type": "number",
-      "$value": "{Weight.Weight-400-regular}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Weight.Weight-400-regular}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -847,10 +847,10 @@
       }
     },
     "Font strong": {
-      "$type": "number",
-      "$value": "{Weight.Weight-600-semibold}",
-      "$description": "",
-      "$extensions": {
+      "type": "number",
+      "value": "{Weight.Weight-600-semibold}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [

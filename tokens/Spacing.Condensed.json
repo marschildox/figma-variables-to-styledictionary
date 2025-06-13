@@ -1,9 +1,9 @@
 {
   "spacing-xs": {
-    "$type": "number",
-    "$value": 2,
-    "$description": "",
-    "$extensions": {
+    "type": "number",
+    "value": 2,
+    "description": "",
+    "extensions": {
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [
@@ -15,10 +15,10 @@
     }
   },
   "spacing-sm": {
-    "$type": "number",
-    "$value": 4,
-    "$description": "",
-    "$extensions": {
+    "type": "number",
+    "value": 4,
+    "description": "",
+    "extensions": {
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [
@@ -30,10 +30,10 @@
     }
   },
   "spacing-md": {
-    "$type": "number",
-    "$value": 8,
-    "$description": "",
-    "$extensions": {
+    "type": "number",
+    "value": 8,
+    "description": "",
+    "extensions": {
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [
@@ -45,10 +45,10 @@
     }
   },
   "spacing-lg": {
-    "$type": "number",
-    "$value": 12,
-    "$description": "",
-    "$extensions": {
+    "type": "number",
+    "value": 12,
+    "description": "",
+    "extensions": {
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [
@@ -60,10 +60,10 @@
     }
   },
   "spacing-xl": {
-    "$type": "number",
-    "$value": 16,
-    "$description": "",
-    "$extensions": {
+    "type": "number",
+    "value": 16,
+    "description": "",
+    "extensions": {
       "com.figma": {
         "hiddenFromPublishing": false,
         "scopes": [

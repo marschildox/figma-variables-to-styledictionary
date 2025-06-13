@@ -1,10 +1,10 @@
 {
   "Primary": {
     "Hover": {
-      "$type": "color",
-      "$value": "{Primary.Primary-4%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Primary.Primary-4%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -16,10 +16,10 @@
       }
     },
     "Focused": {
-      "$type": "color",
-      "$value": "{Primary.Primary-12%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Primary.Primary-12%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -31,10 +31,10 @@
       }
     },
     "Pressed": {
-      "$type": "color",
-      "$value": "{Primary.Primary-10%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Primary.Primary-10%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -46,10 +46,10 @@
       }
     },
     "Dragged": {
-      "$type": "color",
-      "$value": "{Primary.Primary-8%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Primary.Primary-8%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -61,10 +61,10 @@
       }
     },
     "Selected": {
-      "$type": "color",
-      "$value": "{Primary.Primary-8%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Primary.Primary-8%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -78,10 +78,10 @@
   },
   "Black": {
     "Hover": {
-      "$type": "color",
-      "$value": "{Black.000000-4%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Black.000000-4%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -93,10 +93,10 @@
       }
     },
     "Focused": {
-      "$type": "color",
-      "$value": "{Black.000000-12%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Black.000000-12%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -108,10 +108,10 @@
       }
     },
     "Pressed": {
-      "$type": "color",
-      "$value": "{Black.000000-10%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Black.000000-10%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -123,10 +123,10 @@
       }
     },
     "Dragged": {
-      "$type": "color",
-      "$value": "{Black.000000-8%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Black.000000-8%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -138,10 +138,10 @@
       }
     },
     "Selected": {
-      "$type": "color",
-      "$value": "{Black.000000-8%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Black.000000-8%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -155,10 +155,10 @@
   },
   "White": {
     "Hover": {
-      "$type": "color",
-      "$value": "{White.FFFFFF-4%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{White.FFFFFF-4%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -170,10 +170,10 @@
       }
     },
     "Focused": {
-      "$type": "color",
-      "$value": "{White.FFFFFF-12%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{White.FFFFFF-12%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -185,10 +185,10 @@
       }
     },
     "Pressed": {
-      "$type": "color",
-      "$value": "{White.FFFFFF-10%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{White.FFFFFF-10%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -200,10 +200,10 @@
       }
     },
     "Dragged": {
-      "$type": "color",
-      "$value": "{White.FFFFFF-8%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{White.FFFFFF-8%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -215,10 +215,10 @@
       }
     },
     "Selected": {
-      "$type": "color",
-      "$value": "{White.FFFFFF-8%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{White.FFFFFF-8%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -232,10 +232,10 @@
   },
   "Error": {
     "Hover": {
-      "$type": "color",
-      "$value": "{Red.500-4%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Red.500-4%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -247,10 +247,10 @@
       }
     },
     "Focused": {
-      "$type": "color",
-      "$value": "{Red.500-12%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Red.500-12%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -262,10 +262,10 @@
       }
     },
     "Pressed": {
-      "$type": "color",
-      "$value": "{Red.500-10%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Red.500-10%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -277,10 +277,10 @@
       }
     },
     "Dragged": {
-      "$type": "color",
-      "$value": "{Red.500-8%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Red.500-8%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
@@ -292,10 +292,10 @@
       }
     },
     "Selected": {
-      "$type": "color",
-      "$value": "{Red.500-8%}",
-      "$description": "",
-      "$extensions": {
+      "type": "color",
+      "value": "{Red.500-8%}",
+      "description": "",
+      "extensions": {
         "com.figma": {
           "hiddenFromPublishing": false,
           "scopes": [
