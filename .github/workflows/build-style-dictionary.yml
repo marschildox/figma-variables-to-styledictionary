@@ -21,7 +21,7 @@ jobs:
       with:
         node-version: 18
     - name: Install deps
-      run: npm ci                             # usa package-lock
+      run: npm install                             # usa package-lock
 
     # 2️⃣  (Opcional) limpia tokens de demo
     - name: (Demo) clear tokens/
