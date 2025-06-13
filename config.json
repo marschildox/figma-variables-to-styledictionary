@@ -1,5 +1,5 @@
 {
-  "source": ["tokens/**/*.json"],   // ← patrón recursivo
+  "source": ["tokens/**/*.json"],
 
   "platforms": {
     "js": {
