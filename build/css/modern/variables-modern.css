@@ -1,0 +1,39 @@
+/**
+ * Do not edit directly
+ * Generated on Fri, 13 Jun 2025 13:13:05 GMT
+ */
+
+:root {
+  --style-black-italic: Black Italic;
+  --style-extra-bold-italic: Extra Bold Italic;
+  --style-bold-italic: Bold Italic;
+  --style-semi-bold-italic: Semi Bold Italic;
+  --style-medium-italic: Medium Italic;
+  --style-light-italic: Light Italic;
+  --style-extra-ligh-italic: Extra ligh Italic;
+  --style-thin-italic: Thin Italic;
+  --weight-weight-900-black: 900;
+  --weight-weight-800-extrabold: 800;
+  --weight-weight-700-bold: 700;
+  --weight-weight-600-semibold: 600;
+  --weight-weight-500-medium: 500;
+  --weight-weight-400-regular: 400;
+  --weight-weight-300-light: 300;
+  --weight-weight-200-extralight: 200;
+  --weight-weight-100-thin: 100;
+  --size-size-72: 72;
+  --size-size-64: 64;
+  --size-size-48: 48;
+  --size-size-40: 40;
+  --size-size-32: 32;
+  --size-size-24: 24;
+  --size-size-20: 20;
+  --size-size-18: 18;
+  --size-size-16: 16;
+  --size-size-14: 14;
+  --size-size-12: 12;
+  --size-size-10: 10;
+  --font-family-family-button: Source Sans 3;
+  --font-family-family-body: Source Sans 3;
+  --font-family-family-title: Josefin Sans;
+}

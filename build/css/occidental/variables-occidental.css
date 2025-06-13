@@ -1,0 +1,68 @@
+/**
+ * Do not edit directly
+ * Generated on Fri, 13 Jun 2025 13:13:05 GMT
+ */
+
+:root {
+  --warning-900: var(--orange-900);
+  --warning-700: var(--orange-700);
+  --warning-500: var(--orange-500);
+  --warning-300: var(--orange-300);
+  --warning-100: var(--orange-100);
+  --warning-50: var(--orange-50);
+  --error-900: var(--red-900);
+  --error-700: var(--red-700);
+  --error-500: var(--red-500);
+  --error-300: var(--red-300);
+  --error-100: var(--red-100);
+  --error-50: var(--red-50);
+  --success-900: var(--green-900);
+  --success-700: var(--green-700);
+  --success-500: var(--green-500);
+  --success-300: var(--green-300);
+  --success-100: var(--green-100);
+  --success-50: var(--green-50);
+  --basic-accent-2: var(--blue-500);
+  --basic-accent-1: var(--blue-300);
+  --basic-focus-visible: var(--bright-pink-500);
+  --basic-tooltip: var(--dark-grey-dark-grey);
+  --basic-black: var(--black-000);
+  --basic-white: var(--white-fff);
+  --secondary-secondary-14: var(--deep-green-500-14);
+  --secondary-secondary-12: var(--deep-green-500-12);
+  --secondary-secondary-11: var(--deep-green-500-11);
+  --secondary-secondary-10: var(--deep-green-500-10);
+  --secondary-secondary-8: var(--deep-green-500-8);
+  --secondary-secondary-5: var(--deep-green-500-5);
+  --secondary-secondary-4: var(--deep-green-500-4);
+  --secondary-secondary-50: var(--deep-green-50);
+  --secondary-secondary-100: var(--deep-green-100);
+  --secondary-secondary-300: var(--deep-green-300);
+  --secondary-secondary-500: var(--deep-green-500);
+  --secondary-secondary-700: var(--deep-green-700);
+  --secondary-secondary-900: var(--deep-green-900);
+  --neutral-neutral-18: var(--grey-500-18);
+  --neutral-neutral-15: var(--grey-500-15);
+  --neutral-neutral-12: var(--grey-500-12);
+  --neutral-neutral-8: var(--grey-500-8);
+  --neutral-neutral-5: var(--grey-500-5);
+  --neutral-900: var(--grey-900);
+  --neutral-700: var(--grey-700);
+  --neutral-500: var(--grey-500);
+  --neutral-300: var(--grey-300);
+  --neutral-100: var(--grey-100);
+  --neutral-50: var(--grey-50);
+  --primary-primary-14: var(--blue-500-14);
+  --primary-primary-12: var(--blue-500-12);
+  --primary-primary-11: var(--blue-500-11);
+  --primary-primary-10: var(--blue-500-10);
+  --primary-primary-8: var(--blue-500-8);
+  --primary-primary-5: var(--blue-500-5);
+  --primary-primary-4: var(--blue-500-4);
+  --primary-900: var(--blue-900);
+  --primary-700: var(--blue-700);
+  --primary-500: var(--blue-500);
+  --primary-300: var(--blue-300);
+  --primary-100: var(--blue-100);
+  --primary-50: var(--blue-50);
+}
