@@ -1,0 +1,27 @@
+/**
+ * Do not edit directly
+ * Generated on Fri, 13 Jun 2025 14:36:19 GMT
+ */
+
+:root {
+  --error-selected: var(--red-500-8);
+  --error-dragged: var(--red-500-8);
+  --error-pressed: var(--red-500-10);
+  --error-focused: var(--red-500-12);
+  --error-hover: var(--red-500-4);
+  --black-selected: var(--black-000000-8);
+  --black-dragged: var(--black-000000-8);
+  --black-pressed: var(--black-000000-10);
+  --black-focused: var(--black-000000-12);
+  --black-hover: var(--black-000000-4);
+  --white-selected: var(--white-ffffff-8);
+  --white-dragged: var(--white-ffffff-8);
+  --white-pressed: var(--white-ffffff-10);
+  --white-focused: var(--white-ffffff-12);
+  --white-hover: var(--white-ffffff-4);
+  --primary-selected: var(--primary-primary-8);
+  --primary-dragged: var(--primary-primary-8);
+  --primary-pressed: var(--primary-primary-10);
+  --primary-focused: var(--primary-primary-12);
+  --primary-hover: var(--primary-primary-4);
+}
