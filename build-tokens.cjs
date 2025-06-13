@@ -1,17 +1,18 @@
-/* build-tokens.cjs  ─ reescrito: 1 build por colección+modo,
-   pero cargando SIEMPRE todos los tokens para que las referencias se resuelvan */
+/* build-tokens.cjs  ─ genera
+       build/css/<colección-kebab>/<modo-kebab>.css
+   cargando TODOS los JSON, por lo que las referencias se resuelven        */
 
-const fs   = require('fs');
 const path = require('path');
+const fs   = require('fs');
 const glob = require('glob');
 const StyleDictionary = require('style-dictionary');
 
-/* helpers -------------------------------------------------- */
-const kebab = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+/* helper ─ kebab + sin tildes ------------------------------------------- */
+const kebab = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'')
                    .replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-|-$/g,'')
                    .toLowerCase();
 
-/* transforms (kebab, radius→px) ---------------------------- */
+/* transforms comunes ---------------------------------------------------- */
 StyleDictionary.registerTransform({
   name: 'name/kebab',
   type: 'name',
@@ -35,43 +36,41 @@ StyleDictionary.registerTransformGroup({
   ]
 });
 
-/* ───── 1. Reúne (colección, modo) únicos ───── */
+/* 1️⃣  recopila cada (colección, modo) único ---------------------------- */
 const pairs = new Set(
-  glob.sync('tokens/*.json').map(f => {
-    const [col, mode = 'base'] = path.parse(f).name.split('.');
-    return `${col}||${mode}`;
+  glob.sync('tokens/**/*.json').map(f => {
+    const { name } = path.parse(f);        // "SEMANTIC COLORS.Asia Verdezul"
+    const [col, mode = 'base'] = name.split('.');
+    return `${col}||${mode}`;              // → "SEMANTIC COLORS||Asia Verdezul"
   })
 );
 
-/* ───── 2. Para cada pareja, extiende SD ───── */
+/* 2️⃣  construye una plataforma por pareja ------------------------------ */
 pairs.forEach(pair => {
-  const [collectionRaw, modeRaw] = pair.split('||');
-  const collection = kebab(collectionRaw);      // semantic-colors
-  const mode       = kebab(modeRaw);            // kawaii | base
+  const [rawCol, rawMode] = pair.split('||');
+  const colId  = kebab(rawCol);           // semantic-colors
+  const modeId = kebab(rawMode);          // asia-verdezul | base
 
   StyleDictionary.extend({
-    source: ['tokens/**/*.json'],               // 👈 todos los tokens
+    source: ['tokens/**/*.json'],         // <-- carga TODOS los tokens
     platforms: {
       css: {
         transformGroup: 'custom/css',
-        buildPath: `build/css/${collection}/`,
+        buildPath: `build/css/${colId}/`,
         files: [{
-          destination: `${mode}.css`,
+          destination: `${modeId}.css`,
           format: 'css/variables',
-          /* sólo escribe la colección & modo actuales */
+          /* escribe solo los tokens cuyo archivo sea esa colección + modo */
           filter: token => {
-            const [fileCol, fileMode = 'base'] =
-              path.parse(token.filePath).name.split('.');
-            return (
-              fileCol === collectionRaw &&
-              (modeRaw === 'base' ? fileMode === 'base' : fileMode === modeRaw)
-            );
+            const { name } = path.parse(token.filePath);
+            const [fileCol, fileMode = 'base'] = name.split('.');
+            return fileCol === rawCol && fileMode === rawMode;
           },
-          options: { outputReferences: true }
+          options: { outputReferences: true, includeEmpty: true }
         }]
       }
     }
   }).buildAllPlatforms();
 });
 
-console.log('✅  Build terminado sin referencias rotas');
+console.log('✅  Build terminado — carpetas por colección + modo');
