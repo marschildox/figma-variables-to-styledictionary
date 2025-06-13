@@ -1,0 +1,14 @@
+/**
+ * Do not edit directly
+ * Generated on Fri, 13 Jun 2025 14:36:19 GMT
+ */
+
+:root {
+  --hyperlink-hyperlink: var(--bright-blue-bright-blue);
+  --on-primary-dark-disabled: var(--white-ffffff-38);
+  --on-primary-dark-medium-emphasis: var(--white-ffffff-74);
+  --on-primary-dark-hight-emphasis: var(--white-fff);
+  --on-surface-disabled: var(--black-000000-62);
+  --on-surface-medium-emphasis: var(--black-000000-76);
+  --on-surface-hight-emphasis: var(--black-000000-96);
+}

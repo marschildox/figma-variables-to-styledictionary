@@ -1,0 +1,67 @@
+/**
+ * Do not edit directly
+ * Generated on Fri, 13 Jun 2025 14:36:19 GMT
+ */
+
+:root {
+  --caption-font-strong: var(--weight-weight-600-semibold);
+  --caption-font-regular: var(--weight-weight-400-regular);
+  --caption-size-sm: var(--size-size-10);
+  --caption-size-md: var(--size-size-12);
+  --caption-size-lg: var(--size-size-14);
+  --caption-font-family: var(--font-family-family-body);
+  --button-font-strong: var(--weight-weight-600-semibold);
+  --button-size-sm: var(--size-size-14);
+  --button-size-md: var(--size-size-16);
+  --button-size-lg: var(--size-size-18);
+  --button-font-family: var(--font-family-family-button);
+  --body-italic: var(--style-medium-italic);
+  --body-font-strong: var(--weight-weight-600-semibold);
+  --body-font-regular: var(--weight-weight-400-regular);
+  --body-size-sm: var(--size-size-14);
+  --body-size-md: var(--size-size-16);
+  --body-size-lg: var(--size-size-20);
+  --body-font-family: var(--font-family-family-body);
+  --component-subtitle-font-weight: var(--weight-weight-400-regular);
+  --component-subtitle-size-sm: var(--size-size-16);
+  --component-subtitle-size-md: var(--size-size-20);
+  --component-subtitle-size-lg: var(--size-size-24);
+  --component-subtitle-font-family: var(--font-family-family-body);
+  --component-title-font-weight: var(--weight-weight-600-semibold);
+  --component-title-size-sm: var(--size-size-20);
+  --component-title-size-md: var(--size-size-24);
+  --component-title-size-lg: var(--size-size-32);
+  --component-title-font-family: var(--font-family-family-body);
+  --section-subtitle-font-weight: var(--weight-weight-400-regular);
+  --section-subtitle-size-sm: var(--size-size-16);
+  --section-subtitle-size-md: var(--size-size-20);
+  --section-subtitle-size-lg: var(--size-size-24);
+  --section-subtitle-font-family: var(--font-family-family-body);
+  --section-title-font-weight: var(--weight-weight-600-semibold);
+  --section-title-size-sm: var(--size-size-20);
+  --section-title-size-md: var(--size-size-24);
+  --section-title-size-lg: var(--size-size-32);
+  --section-title-font-family: var(--font-family-family-title);
+  --page-subtitle-font-weight: var(--weight-weight-400-regular);
+  --page-subtitle-size-sm: var(--size-size-24);
+  --page-subtitle-size-md: var(--size-size-32);
+  --page-subtitle-size-lg: var(--size-size-40);
+  --page-subtitle-font-family: var(--font-family-family-body);
+  --page-title-font-weight: var(--weight-weight-700-bold);
+  --page-title-size-sm: var(--size-size-32);
+  --page-title-size-md: var(--size-size-48);
+  --page-title-size-lg: var(--size-size-64);
+  --page-title-font-family: var(--font-family-family-title);
+  --hero-subtitle-font-strong: var(--weight-weight-700-bold);
+  --hero-subtitle-font-regular: var(--weight-weight-400-regular);
+  --hero-subtitle-size-sm: var(--size-size-24);
+  --hero-subtitle-size-md: var(--size-size-32);
+  --hero-subtitle-size-lg: var(--size-size-40);
+  --hero-subtitle-font-family: var(--font-family-family-body);
+  --hero-font-weight: var(--weight-weight-700-bold);
+  --hero-size-xs: var(--size-size-40);
+  --hero-size-sm: var(--size-size-48);
+  --hero-size-md: var(--size-size-64);
+  --hero-size-lg: var(--size-size-72);
+  --hero-font-family: var(--font-family-family-title);
+}

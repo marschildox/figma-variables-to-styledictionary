@@ -1,0 +1,25 @@
+/**
+ * Do not edit directly
+ * Generated on Fri, 13 Jun 2025 14:36:19 GMT
+ */
+
+:root {
+  --primary-based-0: var(--white-fff);
+  --neutral-based-0: var(--white-fff);
+  --secondary-based-5: var(--secondary-secondary-14);
+  --secondary-based-4: var(--secondary-secondary-12);
+  --secondary-based-3: var(--secondary-secondary-11);
+  --secondary-based-2: var(--secondary-secondary-8);
+  --secondary-based-1: var(--secondary-secondary-5);
+  --secondary-based-0: var(--basic-white);
+  --primary-based-5: var(--primary-primary-14);
+  --primary-based-4: var(--primary-primary-12);
+  --primary-based-3: var(--primary-primary-11);
+  --primary-based-2: var(--primary-primary-8);
+  --primary-based-1: var(--primary-primary-5);
+  --neutral-based-5: var(--neutral-neutral-18);
+  --neutral-based-4: var(--neutral-neutral-15);
+  --neutral-based-3: var(--neutral-neutral-12);
+  --neutral-based-2: var(--neutral-neutral-8);
+  --neutral-based-1: var(--neutral-neutral-5);
+}
