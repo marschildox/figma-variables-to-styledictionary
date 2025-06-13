@@ -1,8 +1,8 @@
 name: Build Style Dictionary
 
 on:
-  workflow_dispatch:            # ↩ puedes lanzarlo a mano
-  push:                         # ↩ o cada vez que cambien tokens/ o la config
+  workflow_dispatch:          # permite lanzarlo a mano
+  push:                       # o cuando cambien tokens/ o la config
     paths:
       - "tokens/**"
       - "config.json"
@@ -13,36 +13,38 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1) Checkout repo
+      # 1. Clona el repo
       - uses: actions/checkout@v4
 
-      # 2) Node 18 (igual que los otros workflows)
+      # 2. Node 18 (mismo runtime que los otros workflows)
       - uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      # 3) Instala dependencias
+      # 3. Instala dependencias declaradas en package.json
       - name: Install dependencies
         run: npm ci
 
-      # 4) (Debug) Lista todos los JSON encontrados
+      # 4. Lista los JSON para depuración
       - name: List token files
         run: |
-          echo "Archivos en tokens/ detectados por find:"
+          echo "=== JSON detectados ==="
           find tokens -type f -name '*.json' -print
 
-      # 5) Limpia los alias "$" — script ya corregido
+      # 5. Elimina los "$" de los alias
       - name: Remove dollar signs
         run: |
           chmod +x removedollarsigns.sh
           ./removedollarsigns.sh
 
-      # 6) Build Style Dictionary (log en modo info)
+      # 6. Limpia y construye Style Dictionary (log en modo info)
       - name: Build Style Dictionary
         run: |
-          SD_LOG_LEVEL=info npm run build
+          npm run build        # incluye style-dictionary clean + build
+        env:
+          SD_LOG_LEVEL: info
 
-      # 7) Sube la carpeta build/ como artefacto
+      # 7. Sube la carpeta build/ como artefacto
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
