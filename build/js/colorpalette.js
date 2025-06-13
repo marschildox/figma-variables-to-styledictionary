@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 13 Jun 2025 13:13:05 GMT
+ * Generated on Fri, 13 Jun 2025 13:34:43 GMT
  */
 
 export const general-border-radius = 32;
