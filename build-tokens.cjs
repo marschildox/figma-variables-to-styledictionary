@@ -1,32 +1,26 @@
-/* build-tokens.cjs -------------------------------------------------------- */
-const path            = require('path');
-const glob            = require('glob');
+const path  = require('path');
+const glob  = require('glob');
 const StyleDictionary = require('style-dictionary');
 
-/* ─── Util: convierte a kebab sin tildes ────────────────────────────────── */
-const kebab = s => s
-  .normalize('NFD')
-  .replace(/[\u0300-\u036f]/g, '')
-  .replace(/[^a-zA-Z0-9]+/g, '-')
-  .replace(/^-|-$/g, '')
-  .toLowerCase();
+/* helper ─ kebab --------------------------------------------------------- */
+const kebab = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+                   .replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-|-$/g,'')
+                   .toLowerCase();
 
-/* ─── Transforms comunes (solo se registran una vez) ───────────────────── */
+/* transforms comunes ----------------------------------------------------- */
 StyleDictionary.registerTransform({
   name: 'name/kebab',
   type: 'name',
   transformer: p => kebab(p.path.join('-'))
 });
-
 StyleDictionary.registerTransform({
   name: 'size/radius',
   type: 'value',
   matcher: p =>
-    ['borderradius', 'dimension', 'size', 'radius']
-      .includes((p.original.type || '').toLowerCase()),
+    ['borderradius','dimension','size','radius']
+      .includes((p.original.type||'').toLowerCase()),
   transformer: p => `${p.value}px`
 });
-
 StyleDictionary.registerTransformGroup({
   name: 'custom/css',
   transforms: [
@@ -37,31 +31,41 @@ StyleDictionary.registerTransformGroup({
   ]
 });
 
-/* ─── 1. Recorre todos los JSON dentro de /tokens ──────────────────────── */
-glob.sync('tokens/**/*.json').forEach(fullPath => {
-  const { name }         = path.parse(fullPath);            // p.ej. "SEMANTIC COLORS.Asia Verdezul"
-  const [rawCol, rawMod] = name.split('.');
-  const colId  = kebab(rawCol);                             // semantic-colors
-  const modId  = kebab(rawMod || 'base');                   // asia-verdezul | base
-  const outDir = path.join('build/css', colId, '/');
+/* 🆕  lista con todos los JSON “primitives” (colores, radius, etc.) */
+const PRIMITIVE_FILES = glob
+  .sync('tokens/**/*.json', { nocase: true })
+  .filter(f => /primitives?/i.test(f));
 
-  /* ─── 2. Carga SOLO ese fichero como fuente ⤵️ — así no hay colisiones ─ */
+/* 1️⃣  recorre **todos** los JSON de tokens/ ----------------------------- */
+glob.sync('tokens/**/*.json').forEach(fullPath => {
+  const { name }         = path.parse(fullPath);            // "SEMANTIC COLORS.Asia Verdezul"
+  const [rawCol, rawMode = 'base'] = name.split('.');
+
+  const colId  = kebab(rawCol);                             // semantic-colors
+  const modeId = kebab(rawMode);                            // asia-verdezul | base
+  const outDir = `build/css/${colId}/`;
+
+  /* 2️⃣  fuentes: este JSON + todos los primitives ----------------------- */
+  const sources = [fullPath, ...PRIMITIVE_FILES];
+
   StyleDictionary.extend({
-    source: [fullPath],
+    source: sources,
     platforms: {
       css: {
         transformGroup: 'custom/css',
         buildPath: outDir,
         files: [{
-          destination : `${modId}.css`,
-          format      : 'css/variables',
-          options     : { outputReferences: true, includeEmpty: true }
+          destination: `${modeId}.css`,
+          format: 'css/variables',
+          /* solo exporta los tokens que proceden de este archivo */
+          filter: t => path.resolve(t.filePath) === path.resolve(fullPath),
+          options: { outputReferences: true, includeEmpty: true }
         }]
       }
     }
-  }).buildAllPlatforms();
+  }).buildPlatform('css');
 
-  console.log(`✔︎  ${fullPath} → ${outDir}${modId}.css`);
+  console.log(`✔︎  ${colId}/${modeId}.css generado`);
 });
 
-console.log('🏁  Build terminado — 1 CSS por JSON');
+console.log('🏁  Build completo – un CSS por cada JSON, sin referencias rotas');
