@@ -1,6 +1,6 @@
 {
   "source": [
-    "tokens/**/*.json"        // ⬅︎ ahora atraviesa todos los niveles
+    "tokens/**/*.json"
   ],
 
   "platforms": {
