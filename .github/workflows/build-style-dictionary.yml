@@ -1,70 +1,67 @@
-name: Sync Figma → tokens → build + PR
+name: Sync Figma → tokens → CSS build + PR   # cámbialo si quieres
 
 on:
   workflow_dispatch:
     inputs:
       file_key:
-        description: 'Figma FILE_KEY a sincronizar'
+        description: Figma FILE_KEY a sincronizar
         required: true
 
 jobs:
   sync-build-pr:
     runs-on: ubuntu-latest
-
     permissions:
-      contents: write          # push / PR
-      pull-requests: write
+      contents: write          # commits / ramas
+      pull-requests: write     # abrir PR
 
     steps:
-      # 1) Checkout del repo
-      - uses: actions/checkout@v4
+    # 1️⃣  Checkout y entorno reproducible
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 18
+    - name: Install deps
+      run: npm ci                             # usa package-lock
 
-      # 2) Node 18 + npm 9.x (mismo runtime que scripts)
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
+    # 2️⃣  (Opcional) limpia tokens de demo
+    - name: (Demo) clear tokens/
+      if: ${{ hashFiles('cleanup.sh') != '' }}
+      run: bash cleanup.sh
 
-      - name: Install deps
-        run: npm ci             # reproducible
+    # 3️⃣  Pull: Figma → tokens/
+    - name: Sync Figma variables → tokens
+      run: npm run sync-figma-to-tokens -- --output tokens
+      env:
+        FILE_KEY: ${{ inputs.file_key }}
+        PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_ACTION_VARIABLES_SYNC_FIGMA_TOKEN }}
 
-      # 3) Limpia tokens si lo necesitas (opcional)
-      #    comenta esta línea si ya no usas 'cleanup.sh'
-      - name: (Demo) clear tokens directory
-        run: bash cleanup.sh
+    # 4️⃣  Normaliza los alias ($)
+    - name: Remove dollar signs
+      run: |
+        chmod +x removedollarsigns.sh
+        ./removedollarsigns.sh
 
-      # 4) Sincroniza Figma → JSON
-      - name: Sync Figma variables → tokens
-        run: npm run sync-figma-to-tokens -- --output tokens
-        env:
-          FILE_KEY: ${{ inputs.file_key }}
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_ACTION_VARIABLES_SYNC_FIGMA_TOKEN }}
+    # 5️⃣  Style Dictionary → build/  (usa sd.config.js)
+    - name: Build Style Dictionary
+      env:
+        SD_LOG_LEVEL: info
+      run: npm run build                       # clean + build con sd.config.js
 
-      # 5) Quita los '$' (script corregido: recursivo + nombres con espacios)
-      - name: Remove dollar signs
-        run: |
-          chmod +x removedollarsigns.sh
-          ./removedollarsigns.sh
+    # 6️⃣  Artefacto descargable (opcional)
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: style-dictionary-build
+        path: build/
 
-      # 6) Compila Style Dictionary con limpieza previa
-      - name: Build Style Dictionary
-        env:
-          SD_LOG_LEVEL: info
-        run: npm run build      # = style-dictionary clean + build (usa sd.config.js)
-
-      # 7) (Opcional) sube build/ como artefacto
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: style-dictionary-build
-          path: build/
-
-      # 8) Crea (o actualiza) Pull Request con tokens + build
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          commit-message: "chore(tokens): update from Figma"
-          title: Update design tokens from Figma
-          body: |
-            Tokens y assets de Style Dictionary actualizados automáticamente
-            desde https://www.figma.com/file/${{ inputs.file_key }}
-          branch: update-tokens
+    # 7️⃣  Pull Request con tokens/ + build/
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        commit-message: "chore(tokens): update from Figma"
+        title: "Update design tokens & CSS build"
+        body: |
+          Tokens (carpeta **tokens/**) y CSS (carpeta **build/**) actualizados
+          automáticamente desde:
+          https://www.figma.com/file/${{ inputs.file_key }}
+        branch: update-tokens-and-css
