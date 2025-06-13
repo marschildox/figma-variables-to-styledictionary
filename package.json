@@ -4,19 +4,24 @@
 
   "scripts": {
     "prettier:check": "prettier --check src/",
+    
+    /* ► flujo Figma ↔ tokens */
     "sync-figma-to-tokens": "TS_NODE_PROJECT=tsconfig.json node --loader ts-node/esm src/sync_figma_to_tokens.ts",
     "sync-tokens-to-figma": "TS_NODE_PROJECT=tsconfig.json node --loader ts-node/esm src/sync_tokens_to_figma.ts",
+
+    /* ► build Style Dictionary (carpeta/colección → modo.css) */
     "clean": "rimraf build",
-    "build": "npm run clean && node build-tokens.js",
+    "build": "npm run clean && node build-tokens.cjs",
+
     "test": "jest"
   },
 
   "dependencies": {
     "axios": "^1.6.0",
     "dotenv": "^16.3.1",
+    "style-dictionary": "^3.8.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.1.6",
-    "style-dictionary": "^3.8.0"
+    "typescript": "^5.1.6"
   },
 
   "devDependencies": {
@@ -25,7 +30,7 @@
     "@types/node": "^20.4.5",
     "jest": "^29.6.2",
     "prettier": "3.0.0",
-    "ts-jest": "^29.1.1",
-    "rimraf": "^5.0.5"
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.1"
   }
 }
