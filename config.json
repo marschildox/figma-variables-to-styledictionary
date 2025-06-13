@@ -1,7 +1,8 @@
 {
   "source": [
-    "tokens/*.json"
+    "tokens/**/*.json"        // ⬅︎ ahora atraviesa todos los niveles
   ],
+
   "platforms": {
     "js": {
       "buildPath": "build/js/",
@@ -13,6 +14,7 @@
         }
       ]
     },
+
     "iOS": {
       "buildPath": "build/ios/",
       "prefix": "",
@@ -21,9 +23,7 @@
         {
           "destination": "colorpalette.swift",
           "format": "ios-swift/any.swift",
-          "options": {
-            "outputReferences": true
-          },
+          "options": { "outputReferences": true },
           "className": "colorPalette"
         },
         {
@@ -32,17 +32,16 @@
         }
       ]
     },
+
     "CSS": {
-      "buildPath": "build/css//",
+      "buildPath": "build/css/",
       "prefix": "",
       "transformGroup": "css",
       "files": [
         {
           "destination": "variables.css",
           "format": "css/variables",
-          "options": {
-            "outputReferences": true
-          }
+          "options": { "outputReferences": true }
         }
       ]
     }
