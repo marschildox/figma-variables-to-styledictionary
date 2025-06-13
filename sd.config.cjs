@@ -1,62 +1,30 @@
-/* sd.config.cjs ───────────────────────────────────────────────────────────
-   • Gana todos los modos de SEMANTIC COLORS.<Modo>.json
-   • Genera build/css/<modo>/variables-<modo>.css
-   • Mantiene plataformas JS & iOS
-   • Listo para Style Dictionary v3.x
-─────────────────────────────────────────────────────────────────────────── */
+/* sd.config.cjs  (añade o cambia sólo las partes marcadas) */
 const path  = require('path');
-const glob  = require('glob');           // ya viene transitiva en style-dictionary
+const glob  = require('glob');
 const StyleDictionary = require('style-dictionary');
 
-/*---------------------------------------------------------------------------
-  Helpers
----------------------------------------------------------------------------*/
-const kebab = str =>
-  str
-    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')       // tildes → fuera
-    .replace(/[^a-zA-Z0-9]+/g, '-')                        // separadores → -
-    .replace(/^-|-$/g, '')                                 // trim guiones
-    .toLowerCase();
+/* helper -------------------------------------------------- */
+const kebab = s =>
+  s.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+   .replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase();
 
-/*---------------------------------------------------------------------------
-  1 ▸ mode/attribute – solo para ficheros "SEMANTIC COLORS.<Modo>.json"
----------------------------------------------------------------------------*/
+/* 1 ▸ atributo mode sólo para SEMANTIC COLORS -------------- */
 StyleDictionary.registerTransform({
   name: 'attribute/mode-from-semantic',
   type: 'attribute',
   matcher: t => /SEMANTIC COLORS\./i.test(path.basename(t.filePath)),
   transformer(t) {
     const [, mode] = path.basename(t.filePath)
-                         .match(/SEMANTIC COLORS\.([^.]+)\.json$/i);
+                       .match(/SEMANTIC COLORS\.([^.]+)\.json$/i);
     t.attributes = { ...t.attributes, mode };
     return t.attributes;
   }
 });
 
-/*---------------------------------------------------------------------------
-  2 ▸ name/kebab + sin acentos
----------------------------------------------------------------------------*/
-StyleDictionary.registerTransform({
-  name: 'name/uni-kebab',
-  type: 'name',
-  transformer: prop => kebab(prop.path.join('-'))
-});
+/* 2 ▸ name / radius transforms … (igual que antes) --------- */
+StyleDictionary.registerTransform({ /* name/uni-kebab … */ });
+StyleDictionary.registerTransform({ /* size/borderRadius … */ });
 
-/*---------------------------------------------------------------------------
-  3 ▸ borderRadius / dimension → px
----------------------------------------------------------------------------*/
-StyleDictionary.registerTransform({
-  name: 'size/borderRadius',
-  type: 'value',
-  matcher: p =>
-    ['borderradius', 'dimension', 'size', 'radius']
-      .includes((p.original.type || '').toLowerCase()),
-  transformer: p => `${p.value}px`
-});
-
-/*---------------------------------------------------------------------------
-  4 ▸ Agrupación personalizada para CSS
----------------------------------------------------------------------------*/
 StyleDictionary.registerTransformGroup({
   name: 'custom/css',
   transforms: [
@@ -68,62 +36,46 @@ StyleDictionary.registerTransformGroup({
   ]
 });
 
-/*---------------------------------------------------------------------------
-  5 ▸ Config base (plataformas comunes)
----------------------------------------------------------------------------*/
+/* 3 ▸ config base ------------------------------------------ */
 const config = {
   source: ['tokens/**/*.json'],
   platforms: {
-    js: {
-      buildPath: 'build/js/',
-      transformGroup: 'scss',
-      files: [
-        { destination: 'colorpalette.js', format: 'javascript/es6' }
-      ]
-    },
-    ios: {
-      buildPath: 'build/ios/',
-      transformGroup: 'ios-swift',
-      files: [
-        {
-          destination: 'colorpalette.swift',
-          format: 'ios-swift/any.swift',
-          className: 'colorPalette',
-          options: { outputReferences: true }
-        },
-        { destination: 'enum.swift', format: 'ios-swift/enum.swift' }
-      ]
-    }
-    /* Las plataformas CSS por modo se añaden dinámicamente debajo */
+    js:  { /* … */ },
+    ios: { /* … */ }
   }
 };
 
-/*---------------------------------------------------------------------------
-  6 ▸ Descubre todos los modos presentes y crea plataformas CSS
----------------------------------------------------------------------------*/
+/* 4 ▸ crea una plataforma por cada modo ─ ahora el filtro     */
+/*     incluye ➊ tokens del modo Y ➋ tokens sin mode          */
 const files = glob.sync('tokens/**/SEMANTIC COLORS.*.json', { nocase: true });
-const modes = Array.from(
-  new Set(
-    files.map(f =>
-      path.basename(f).match(/SEMANTIC COLORS\.([^.]+)\.json$/i)[1]
-    )
-  )
+const modes = new Set(
+  files.map(f => path.basename(f).match(/SEMANTIC COLORS\.([^.]+)\.json$/i)[1])
 );
 
 modes.forEach(mode => {
-  const id = kebab(mode);                             // ej. "asia-verdezul"
+  const id = kebab(mode);
   config.platforms[`css-${id}`] = {
     buildPath: `build/css/${id}/`,
     transformGroup: 'custom/css',
-    files: [
-      {
-        destination: `variables-${id}.css`,
-        format: 'css/variables',
-        filter: t => t.attributes.mode === mode,      // solo tokens de ese modo
-        options: { outputReferences: true }
-      }
-    ]
+    files: [{
+      destination: `variables-${id}.css`,
+      format: 'css/variables',
+      /*  ⬇︎ Nuevo filtro: tokens con ese modo 𝘰 SIN modo  */
+      filter: t => !t.attributes.mode || t.attributes.mode === mode,
+      options: { outputReferences: true, outputReferencesDeep: true }
+    }]
   };
 });
+
+/* 5 ▸ archivo global con TODO (opcional) -------------------- */
+config.platforms['css-base'] = {
+  buildPath: 'build/css/',
+  transformGroup: 'custom/css',
+  files: [{
+    destination: 'variables.css',
+    format: 'css/variables',
+    options: { outputReferences: true, outputReferencesDeep: true }
+  }]
+};
 
 module.exports = config;
