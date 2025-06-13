@@ -1,67 +1,81 @@
-name: Sync Figma → tokens → CSS build + PR   # cámbialo si quieres
+/* sd.config.cjs  (añade o cambia sólo las partes marcadas) */
+const path  = require('path');
+const glob  = require('glob');
+const StyleDictionary = require('style-dictionary');
 
-on:
-  workflow_dispatch:
-    inputs:
-      file_key:
-        description: Figma FILE_KEY a sincronizar
-        required: true
+/* helper -------------------------------------------------- */
+const kebab = s =>
+  s.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+   .replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase();
 
-jobs:
-  sync-build-pr:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write          # commits / ramas
-      pull-requests: write     # abrir PR
+/* 1 ▸ atributo mode sólo para SEMANTIC COLORS -------------- */
+StyleDictionary.registerTransform({
+  name: 'attribute/mode-from-semantic',
+  type: 'attribute',
+  matcher: t => /SEMANTIC COLORS\./i.test(path.basename(t.filePath)),
+  transformer(t) {
+    const [, mode] = path.basename(t.filePath)
+                       .match(/SEMANTIC COLORS\.([^.]+)\.json$/i);
+    t.attributes = { ...t.attributes, mode };
+    return t.attributes;
+  }
+});
 
-    steps:
-    # 1️⃣  Checkout y entorno reproducible
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: 18
-    - name: Install deps
-      run: npm install                             # usa package-lock
+/* 2 ▸ name / radius transforms … (igual que antes) --------- */
+StyleDictionary.registerTransform({ /* name/uni-kebab … */ });
+StyleDictionary.registerTransform({ /* size/borderRadius … */ });
 
-    # 2️⃣  (Opcional) limpia tokens de demo
-    - name: (Demo) clear tokens/
-      if: ${{ hashFiles('cleanup.sh') != '' }}
-      run: bash cleanup.sh
+StyleDictionary.registerTransformGroup({
+  name: 'custom/css',
+  transforms: [
+    'attribute/mode-from-semantic',
+    'attribute/cti',
+    'name/uni-kebab',
+    'size/borderRadius',
+    'color/css'
+  ]
+});
 
-    # 3️⃣  Pull: Figma → tokens/
-    - name: Sync Figma variables → tokens
-      run: npm run sync-figma-to-tokens -- --output tokens
-      env:
-        FILE_KEY: ${{ inputs.file_key }}
-        PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_ACTION_VARIABLES_SYNC_FIGMA_TOKEN }}
+/* 3 ▸ config base ------------------------------------------ */
+const config = {
+  source: ['tokens/**/*.json'],
+  platforms: {
+    js:  { /* … */ },
+    ios: { /* … */ }
+  }
+};
 
-    # 4️⃣  Normaliza los alias ($)
-    - name: Remove dollar signs
-      run: |
-        chmod +x removedollarsigns.sh
-        ./removedollarsigns.sh
+/* 4 ▸ crea una plataforma por cada modo ─ ahora el filtro     */
+/*     incluye ➊ tokens del modo Y ➋ tokens sin mode          */
+const files = glob.sync('tokens/**/SEMANTIC COLORS.*.json', { nocase: true });
+const modes = new Set(
+  files.map(f => path.basename(f).match(/SEMANTIC COLORS\.([^.]+)\.json$/i)[1])
+);
 
-    # 5️⃣  Style Dictionary → build/  (usa sd.config.js)
-    - name: Build Style Dictionary
-      env:
-        SD_LOG_LEVEL: info
-      run: npm run build                       # clean + build con sd.config.js
+modes.forEach(mode => {
+  const id = kebab(mode);
+  config.platforms[`css-${id}`] = {
+    buildPath: `build/css/${id}/`,
+    transformGroup: 'custom/css',
+    files: [{
+      destination: `variables-${id}.css`,
+      format: 'css/variables',
+      /*  ⬇︎ Nuevo filtro: tokens con ese modo 𝘰 SIN modo  */
+      filter: t => !t.attributes.mode || t.attributes.mode === mode,
+      options: { outputReferences: true, outputReferencesDeep: true }
+    }]
+  };
+});
 
-    # 6️⃣  Artefacto descargable (opcional)
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: style-dictionary-build
-        path: build/
+/* 5 ▸ archivo global con TODO (opcional) -------------------- */
+config.platforms['css-base'] = {
+  buildPath: 'build/css/',
+  transformGroup: 'custom/css',
+  files: [{
+    destination: 'variables.css',
+    format: 'css/variables',
+    options: { outputReferences: true, outputReferencesDeep: true }
+  }]
+};
 
-    # 7️⃣  Pull Request con tokens/ + build/
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v5
-      with:
-        commit-message: "chore(tokens): update from Figma"
-        title: "Update design tokens & CSS build"
-        body: |
-          Tokens (carpeta **tokens/**) y CSS (carpeta **build/**) actualizados
-          automáticamente desde:
-          https://www.figma.com/file/${{ inputs.file_key }}
-        branch: update-tokens-and-css
+module.exports = config;
