@@ -1,48 +1,66 @@
-/* sd.config.cjs ------------------------------------------------------------ */
-const fs   = require('fs');
-const path = require('path');
+/* sd.config.cjs ───────────────────────────────────────────────────────────
+   • Gana todos los modos de SEMANTIC COLORS.<Modo>.json
+   • Genera build/css/<modo>/variables-<modo>.css
+   • Mantiene plataformas JS & iOS
+   • Listo para Style Dictionary v3.x
+─────────────────────────────────────────────────────────────────────────── */
+const path  = require('path');
+const glob  = require('glob');           // ya viene transitiva en style-dictionary
 const StyleDictionary = require('style-dictionary');
 
-/* ──────────────────────────────── 1. helper ─────────────────────────────── */
+/*---------------------------------------------------------------------------
+  Helpers
+---------------------------------------------------------------------------*/
 const kebab = str =>
-  str.normalize('NFD').replace(/[\u0300-\u036f]/g, '') // tildes fuera
-     .replace(/[^a-zA-Z0-9]+/g, '-')                  // sep → guión
-     .replace(/^-|-$/g, '')                           // trims
-     .toLowerCase();
+  str
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')       // tildes → fuera
+    .replace(/[^a-zA-Z0-9]+/g, '-')                        // separadores → -
+    .replace(/^-|-$/g, '')                                 // trim guiones
+    .toLowerCase();
 
-/* ───── 2. Transform: añade token.attributes.mode solo si proviene de
-          un archivo 'SEMANTIC COLORS.<mode>.json' ────────────────────────── */
+/*---------------------------------------------------------------------------
+  1 ▸ mode/attribute – solo para ficheros "SEMANTIC COLORS.<Modo>.json"
+---------------------------------------------------------------------------*/
 StyleDictionary.registerTransform({
-  name: 'attribute/mode-from-semantic-colors',
+  name: 'attribute/mode-from-semantic',
   type: 'attribute',
-  transformer(token) {
-    const re = /SEMANTIC COLORS\.([^.]+)\.json$/i;
-    const hit = token.filePath.match(re);
-    if (hit) token.attributes = { ...token.attributes, mode: hit[1] };
-    return token.attributes;
+  matcher: t => /SEMANTIC COLORS\./i.test(path.basename(t.filePath)),
+  transformer(t) {
+    const [, mode] = path.basename(t.filePath)
+                         .match(/SEMANTIC COLORS\.([^.]+)\.json$/i);
+    t.attributes = { ...t.attributes, mode };
+    return t.attributes;
   }
 });
 
-/* ───── 3. Transform: kebab + sin tildes ─────────────────────────────────── */
+/*---------------------------------------------------------------------------
+  2 ▸ name/kebab + sin acentos
+---------------------------------------------------------------------------*/
 StyleDictionary.registerTransform({
   name: 'name/uni-kebab',
   type: 'name',
   transformer: prop => kebab(prop.path.join('-'))
 });
 
-/* ───── 4. Transform: border radius → px ─────────────────────────────────── */
+/*---------------------------------------------------------------------------
+  3 ▸ borderRadius / dimension → px
+---------------------------------------------------------------------------*/
 StyleDictionary.registerTransform({
   name: 'size/borderRadius',
   type: 'value',
-  matcher: p => ['borderRadius', 'dimension', 'size', 'radius'].includes(p.original.type),
+  matcher: p =>
+    ['borderradius', 'dimension', 'size', 'radius']
+      .includes((p.original.type || '').toLowerCase()),
   transformer: p => `${p.value}px`
 });
 
-/* ───── 5. Agrupación personalizada ─────────────────────────────────────── */
+/*---------------------------------------------------------------------------
+  4 ▸ Agrupación personalizada para CSS
+---------------------------------------------------------------------------*/
 StyleDictionary.registerTransformGroup({
   name: 'custom/css',
   transforms: [
-    'attribute/mode-from-semantic-colors', // 👈 primero, saca el modo
+    'attribute/mode-from-semantic',
     'attribute/cti',
     'name/uni-kebab',
     'size/borderRadius',
@@ -50,14 +68,18 @@ StyleDictionary.registerTransformGroup({
   ]
 });
 
-/* ───── 6. Config base ───────────────────────────────────────────────────── */
+/*---------------------------------------------------------------------------
+  5 ▸ Config base (plataformas comunes)
+---------------------------------------------------------------------------*/
 const config = {
   source: ['tokens/**/*.json'],
   platforms: {
-    js:  {
+    js: {
       buildPath: 'build/js/',
       transformGroup: 'scss',
-      files: [{ destination: 'colorpalette.js', format: 'javascript/es6' }]
+      files: [
+        { destination: 'colorpalette.js', format: 'javascript/es6' }
+      ]
     },
     ios: {
       buildPath: 'build/ios/',
@@ -72,27 +94,36 @@ const config = {
         { destination: 'enum.swift', format: 'ios-swift/enum.swift' }
       ]
     }
+    /* Las plataformas CSS por modo se añaden dinámicamente debajo */
   }
 };
 
-/* ───── 7. Descubre modos según SEMANTIC COLORS.*.json ───────────────────── */
-const tokensDir = path.resolve(__dirname, 'tokens');
-fs.readdirSync(tokensDir)
-  .filter(fn => fn.startsWith('SEMANTIC COLORS.') && fn.endsWith('.json'))
-  .forEach(fn => {
-    const mode = fn.match(/^SEMANTIC COLORS\.([^.]+)\.json$/i)[1];
-    const keb  = kebab(mode);
+/*---------------------------------------------------------------------------
+  6 ▸ Descubre todos los modos presentes y crea plataformas CSS
+---------------------------------------------------------------------------*/
+const files = glob.sync('tokens/**/SEMANTIC COLORS.*.json', { nocase: true });
+const modes = Array.from(
+  new Set(
+    files.map(f =>
+      path.basename(f).match(/SEMANTIC COLORS\.([^.]+)\.json$/i)[1]
+    )
+  )
+);
 
-    config.platforms[`css-${keb}`] = {
-      buildPath: `build/css/${keb}/`,
-      transformGroup: 'custom/css',
-      files: [{
-        destination: `variables-${keb}.css`,
+modes.forEach(mode => {
+  const id = kebab(mode);                             // ej. "asia-verdezul"
+  config.platforms[`css-${id}`] = {
+    buildPath: `build/css/${id}/`,
+    transformGroup: 'custom/css',
+    files: [
+      {
+        destination: `variables-${id}.css`,
         format: 'css/variables',
-        filter: token => token.attributes.mode === mode, // solo tokens de ese modo
+        filter: t => t.attributes.mode === mode,      // solo tokens de ese modo
         options: { outputReferences: true }
-      }]
-    };
-  });
+      }
+    ]
+  };
+});
 
 module.exports = config;
