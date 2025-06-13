@@ -1,0 +1,45 @@
+/**
+ * Do not edit directly
+ * Generated on Fri, 13 Jun 2025 13:13:05 GMT
+ */
+
+:root {
+  --primary-based-0: var(--white-fff);
+  --neutral-based-0: var(--white-fff);
+  --error-selected: var(--red-500-8);
+  --error-dragged: var(--red-500-8);
+  --error-pressed: var(--red-500-10);
+  --error-focused: var(--red-500-12);
+  --error-hover: var(--red-500-4);
+  --black-selected: var(--black-000000-8);
+  --black-dragged: var(--black-000000-8);
+  --black-pressed: var(--black-000000-10);
+  --black-focused: var(--black-000000-12);
+  --black-hover: var(--black-000000-4);
+  --white-selected: var(--white-ffffff-8);
+  --white-dragged: var(--white-ffffff-8);
+  --white-pressed: var(--white-ffffff-10);
+  --white-focused: var(--white-ffffff-12);
+  --white-hover: var(--white-ffffff-4);
+  --secondary-based-5: var(--secondary-secondary-14);
+  --secondary-based-4: var(--secondary-secondary-12);
+  --secondary-based-3: var(--secondary-secondary-11);
+  --secondary-based-2: var(--secondary-secondary-8);
+  --secondary-based-1: var(--secondary-secondary-5);
+  --secondary-based-0: var(--basic-white);
+  --primary-based-5: var(--primary-primary-14);
+  --primary-based-4: var(--primary-primary-12);
+  --primary-based-3: var(--primary-primary-11);
+  --primary-based-2: var(--primary-primary-8);
+  --primary-based-1: var(--primary-primary-5);
+  --neutral-based-5: var(--neutral-neutral-18);
+  --neutral-based-4: var(--neutral-neutral-15);
+  --neutral-based-3: var(--neutral-neutral-12);
+  --neutral-based-2: var(--neutral-neutral-8);
+  --neutral-based-1: var(--neutral-neutral-5);
+  --primary-selected: var(--primary-primary-8);
+  --primary-dragged: var(--primary-primary-8);
+  --primary-pressed: var(--primary-primary-10);
+  --primary-focused: var(--primary-primary-12);
+  --primary-hover: var(--primary-primary-4);
+}
