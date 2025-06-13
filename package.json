@@ -7,7 +7,7 @@
     "sync-figma-to-tokens": "TS_NODE_PROJECT=tsconfig.json node --loader ts-node/esm src/sync_figma_to_tokens.ts",
     "sync-tokens-to-figma": "TS_NODE_PROJECT=tsconfig.json node --loader ts-node/esm src/sync_tokens_to_figma.ts",
     "clean": "rimraf build && style-dictionary clean --config sd.config.cjs",
-    "build": "npm run clean && style-dictionary build --config sd.config.cjs",
+    "build": "npm run clean && style-dictionary build --config sd.config.cjs"
     "test": "jest"
   },
 
