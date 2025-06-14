@@ -3,15 +3,10 @@
   "type": "module",
 
   "scripts": {
-    /* lint & tests (sin cambios) */
     "prettier:check": "prettier --check src/",
     "test": "jest",
-
-    /* sincronización Figma ↔ tokens */
     "sync-figma-to-tokens": "TS_NODE_PROJECT=tsconfig.json node --loader ts-node/esm src/sync_figma_to_tokens.ts",
     "sync-tokens-to-figma": "TS_NODE_PROJECT=tsconfig.json node --loader ts-node/esm src/sync_tokens_to_figma.ts",
-
-    /* build Style Dictionary (carpeta/colección → modo.css) */
     "clean": "rimraf build",
     "build": "npm run clean && node build-tokens.cjs"
   },
