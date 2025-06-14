@@ -1,11 +1,30 @@
+/**
+ * build-tokens.cjs
+ *
+ * Genera:
+ *   build/css/<colección-kebab>/<modo-kebab>.css
+ *   (si el JSON no tiene modo → …/base.css)
+ *
+ * Estrategia:
+ *   • Recorre CADA JSON de /tokens
+ *   • Carga ese JSON + todos los ficheros de soporte (primitives, radios…)
+ *   • Exporta solo los tokens cuyo filePath es ese JSON
+ *   • Usa transforms kebab & radius→px
+ */
+
 const path  = require('path');
 const glob  = require('glob');
+const rimraf = require('rimraf');
 const StyleDictionary = require('style-dictionary');
 
-/* helper ─ kebab --------------------------------------------------------- */
-const kebab = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-                   .replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-|-$/g,'')
-                   .toLowerCase();
+/* 🧹 limpia build/ antes de empezar */
+rimraf.sync('build');
+
+/* helper – kebab sin tildes --------------------------------------------- */
+const kebab = str =>
+  str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+     .replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '')
+     .toLowerCase();
 
 /* transforms comunes ----------------------------------------------------- */
 StyleDictionary.registerTransform({
@@ -17,8 +36,8 @@ StyleDictionary.registerTransform({
   name: 'size/radius',
   type: 'value',
   matcher: p =>
-    ['borderradius','dimension','size','radius']
-      .includes((p.original.type||'').toLowerCase()),
+    ['borderradius', 'dimension', 'size', 'radius']
+      .includes((p.original.type || '').toLowerCase()),
   transformer: p => `${p.value}px`
 });
 StyleDictionary.registerTransformGroup({
@@ -31,33 +50,37 @@ StyleDictionary.registerTransformGroup({
   ]
 });
 
-/* 🆕  lista con todos los JSON “primitives” (colores, radius, etc.) */
-const PRIMITIVE_FILES = glob
+/* 🗂️  ficheros que siempre se añaden para resolver alias  ---------------- */
+const SUPPORT_FILES = glob
   .sync('tokens/**/*.json', { nocase: true })
-  .filter(f => /primitives?/i.test(f));
+  .filter(f =>
+    /primitives?/i.test(f)        ||   // color-primitives, radius-primitives…
+    /border radius/i.test(f)      ||   // Border Radius base
+    /dimensions/i.test(f)         ||   // Dimensions base (si lo tuvieras)
+    /spacing/i.test(f)                 // Spacing base (opcional)
+  );
 
-/* 1️⃣  recorre **todos** los JSON de tokens/ ----------------------------- */
+/* 🚀  procesa cada JSON de /tokens --------------------------------------- */
 glob.sync('tokens/**/*.json').forEach(fullPath => {
-  const { name }         = path.parse(fullPath);            // "SEMANTIC COLORS.Asia Verdezul"
-  const [rawCol, rawMode = 'base'] = name.split('.');
 
-  const colId  = kebab(rawCol);                             // semantic-colors
-  const modeId = kebab(rawMode);                            // asia-verdezul | base
-  const outDir = `build/css/${colId}/`;
+  const { name }         = path.parse(fullPath);      // p.ej. "SEMANTIC COLORS.Asia Verdezul"
+  const [rawCol, rawMod] = name.split('.');
+  const colId  = kebab(rawCol);                       // "semantic-colors"
+  const modId  = kebab(rawMod || 'base');             // "asia-verdezul" | "base"
 
-  /* 2️⃣  fuentes: este JSON + todos los primitives ----------------------- */
-  const sources = [fullPath, ...PRIMITIVE_FILES];
+  const sources = [fullPath, ...SUPPORT_FILES];
 
+  /* instancia aislada de SD (sin colisiones) */
   StyleDictionary.extend({
     source: sources,
     platforms: {
       css: {
         transformGroup: 'custom/css',
-        buildPath: outDir,
+        buildPath: `build/css/${colId}/`,
         files: [{
-          destination: `${modeId}.css`,
+          destination: `${modId}.css`,
           format: 'css/variables',
-          /* solo exporta los tokens que proceden de este archivo */
+          /* exporta solo tokens definidos en este archivo */
           filter: t => path.resolve(t.filePath) === path.resolve(fullPath),
           options: { outputReferences: true, includeEmpty: true }
         }]
@@ -65,7 +88,7 @@ glob.sync('tokens/**/*.json').forEach(fullPath => {
     }
   }).buildPlatform('css');
 
-  console.log(`✔︎  ${colId}/${modeId}.css generado`);
+  console.log(`✔︎  ${colId}/${modId}.css generado`);
 });
 
-console.log('🏁  Build completo – un CSS por cada JSON, sin referencias rotas');
+console.log('\n🏁  Build completo – 1 CSS por cada JSON');
